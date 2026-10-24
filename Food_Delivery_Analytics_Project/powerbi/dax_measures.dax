@@ -1,0 +1,69 @@
+// ============================================================
+// Food Delivery - Power BI DAX  (paste each block via Modeling > New measure / New column / New table)
+// BUSINESS RULES
+//  1. Orders table is ONE ROW PER ORDER (order_id unique) -> DISTINCTCOUNT cannot double count.
+//  2. Sales = net_amount of DELIVERED orders only. Cancelled orders are never sales.
+//  3. Average Delivery Time / Rating ignore blanks automatically (AVERAGE skips blanks).
+// ============================================================
+
+// ---------- 1. DATE TABLE  (Modeling > New table) ----------
+Date =
+ADDCOLUMNS (
+    CALENDAR ( DATE ( 2025, 1, 1 ), DATE ( 2025, 12, 31 ) ),
+    "Year", YEAR ( [Date] ),
+    "Month No", MONTH ( [Date] ),
+    "Month", FORMAT ( [Date], "MMM" ),
+    "Month Year", FORMAT ( [Date], "MMM YYYY" ),
+    "Weekday No", WEEKDAY ( [Date], 2 ),
+    "Weekday", FORMAT ( [Date], "ddd" )
+)
+// Then: select column Month -> Column tools -> Sort by column -> Month No.  Right-click table > Mark as date table (column Date).
+
+// ---------- 2. CALCULATED COLUMNS in table Orders (Modeling > New column) ----------
+Is Delivered = IF ( Orders[order_status] = "Delivered", 1, 0 )
+
+Order Hour = HOUR ( Orders[order_time] )
+
+Time of Day =
+SWITCH (
+    TRUE (),
+    Orders[Order Hour] >= 6  && Orders[Order Hour] <= 10, "1. Breakfast",
+    Orders[Order Hour] >= 11 && Orders[Order Hour] <= 15, "2. Lunch",
+    Orders[Order Hour] >= 16 && Orders[Order Hour] <= 18, "3. Snacks",
+    Orders[Order Hour] >= 19 && Orders[Order Hour] <= 22, "4. Dinner",
+    "5. Late Night"
+)
+
+// ---------- 3. CORE MEASURES (Modeling > New measure) ----------
+Total Orders = DISTINCTCOUNT ( Orders[order_id] )
+
+Completed Orders = CALCULATE ( [Total Orders], Orders[Is Delivered] = 1 )
+
+Cancelled Orders = CALCULATE ( [Total Orders], Orders[Is Delivered] = 0 )
+
+Total Sales = CALCULATE ( SUM ( Orders[net_amount] ), Orders[Is Delivered] = 1 )
+
+Average Order Value = DIVIDE ( [Total Sales], [Completed Orders], 0 )
+
+Total Customers = DISTINCTCOUNT ( Orders[customer_id] )
+
+Average Delivery Time = CALCULATE ( AVERAGE ( Orders[delivery_time_min] ), Orders[Is Delivered] = 1 )
+
+Average Customer Rating = AVERAGE ( Orders[customer_rating] )
+
+Cancellation Rate = DIVIDE ( [Cancelled Orders], [Total Orders], 0 )
+
+// ---------- 4. OPTIONAL EXTRA MEASURES ----------
+Sales Previous Month = CALCULATE ( [Total Sales], DATEADD ( 'Date'[Date], -1, MONTH ) )
+
+Sales MoM % = DIVIDE ( [Total Sales] - [Sales Previous Month], [Sales Previous Month] )
+
+Rated Orders = COUNT ( Orders[customer_rating] )
+
+Repeat Customers =
+COUNTROWS (
+    FILTER (
+        VALUES ( Orders[customer_id] ),
+        CALCULATE ( [Completed Orders] ) > 1
+    )
+)

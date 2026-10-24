@@ -1,0 +1,49 @@
+{
+ "name": "Food Delivery Theme",
+ "dataColors": [
+  "#E23744",
+  "#FC8019",
+  "#1F3864",
+  "#2E7D32",
+  "#7F6000",
+  "#8E44AD",
+  "#16A085",
+  "#7F8C8D"
+ ],
+ "background": "#FFFFFF",
+ "foreground": "#262626",
+ "tableAccent": "#E23744",
+ "visualStyles": {
+  "*": {
+   "*": {
+    "title": [
+     {
+      "fontFamily": "Segoe UI Semibold",
+      "fontSize": 12
+     }
+    ],
+    "background": [
+     {
+      "color": {
+       "solid": {
+        "color": "#FFFFFF"
+       }
+      },
+      "transparency": 0
+     }
+    ],
+    "border": [
+     {
+      "show": true,
+      "color": {
+       "solid": {
+        "color": "#E5E5E5"
+       }
+      },
+      "radius": 6
+     }
+    ]
+   }
+  }
+ }
+}

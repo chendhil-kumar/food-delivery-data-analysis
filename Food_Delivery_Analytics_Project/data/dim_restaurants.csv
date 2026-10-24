@@ -1,0 +1,33 @@
+restaurant_id,restaurant_name,city,cuisine,restaurant_type,partner_since
+R001,Spice Junction,Bengaluru,North Indian,Dine-in,2020-10-21
+R002,Dosa Darbar,Bengaluru,South Indian,Dine-in,2023-06-24
+R003,Nawabi Biryani House,Bengaluru,Biryani,Cloud Kitchen,2021-06-10
+R004,Wok & Roll,Bengaluru,Chinese,Cloud Kitchen,2022-06-13
+R005,Curry Leaf Kitchen,Mumbai,North Indian,Dine-in,2021-04-03
+R006,Pav Bhaji Point,Mumbai,Street Food,Dine-in,2020-04-23
+R007,Mumbai Pizza Co,Mumbai,Pizza,Cloud Kitchen,2022-10-07
+R008,Dragon Express,Mumbai,Chinese,Cloud Kitchen,2023-10-11
+R009,Tandoor Tales,Delhi,North Indian,Dine-in,2020-04-19
+R010,Chaat Corner,Delhi,Street Food,Dine-in,2022-11-02
+R011,Burger Barn,Delhi,Burgers,Cloud Kitchen,2020-04-15
+R012,Momo Magic,Delhi,Chinese,Cloud Kitchen,2022-07-14
+R013,Hyderabad Dum Biryani,Hyderabad,Biryani,Dine-in,2022-11-21
+R014,Andhra Meals Mess,Hyderabad,South Indian,Dine-in,2021-03-19
+R015,Pizza Palace,Hyderabad,Pizza,Cloud Kitchen,2022-08-19
+R016,Sweet Tooth Studio,Hyderabad,Desserts,Cloud Kitchen,2020-05-05
+R017,Chettinad House,Chennai,South Indian,Dine-in,2019-05-23
+R018,Filter Coffee & Tiffin,Chennai,South Indian,Dine-in,2019-06-23
+R019,Madras Biryani Co,Chennai,Biryani,Cloud Kitchen,2021-03-15
+R020,Green Bowl Kitchen,Chennai,Healthy Food,Cloud Kitchen,2023-06-13
+R021,Misal Mantra,Pune,Street Food,Dine-in,2019-08-18
+R022,Pune Burger Hub,Pune,Burgers,Cloud Kitchen,2021-03-31
+R023,Maratha Thali House,Pune,North Indian,Dine-in,2022-06-21
+R024,Cake Walk,Pune,Desserts,Cloud Kitchen,2019-12-31
+R025,Bengal Bites,Kolkata,Street Food,Dine-in,2022-07-22
+R026,Kolkata Roll Centre,Kolkata,Street Food,Cloud Kitchen,2020-07-04
+R027,Biryani Baadshah,Kolkata,Biryani,Dine-in,2022-12-26
+R028,Mishti Mandir,Kolkata,Desserts,Dine-in,2021-11-08
+R029,Gujarati Thali Ghar,Ahmedabad,North Indian,Dine-in,2021-09-11
+R030,Dhokla Delight,Ahmedabad,Street Food,Dine-in,2019-11-15
+R031,Fit Fuel Kitchen,Ahmedabad,Healthy Food,Cloud Kitchen,2021-04-13
+R032,Cheesy Slice,Ahmedabad,Pizza,Cloud Kitchen,2023-03-22
